@@ -13,6 +13,7 @@ services:
       - ./_config/apache/laravel.conf:/etc/apache2/sites-available/000-default.conf
       - ./backend:/var/www/html
       - vendor:/var/www/html/vendor
+    env_file: ./backend/.env.example
     ports:
       - '8081:80'
   frontend:
