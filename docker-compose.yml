@@ -1,0 +1,58 @@
+version: '3'
+
+services:
+  backend:
+    build:
+      context: ./backend
+    container_name: cu_backend
+    depends_on:
+      - mysql
+    restart: always
+    volumes:
+      - ./_config/php/php.conf.ini:/usr/local/etc/php/conf.d/conf.ini
+      - ./_config/apache/laravel.conf:/etc/apache2/sites-available/000-default.conf
+      - ./backend:/var/www/html
+      - vendor:/var/www/html/vendor
+    ports:
+      - '8081:80'
+  frontend:
+    build:
+      context: ./frontend
+    container_name: cu_frontend
+    ports:
+      - '80:3000'
+    restart: always
+    volumes:
+      - ./frontend:/usr/src/
+      - nodemodules:/usr/src/node_modules
+  mysql:
+    image: mysql:latest
+    container_name: cu_db
+    command: --default-authentication-plugin=mysql_native_password
+    volumes:
+      - ./_data/mysql:/var/lib/mysql
+      - ./_config/sql:/etc/mysql/conf.d
+    environment:
+      - MYSQL_DATABASE=laravel
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_PASSWORD=password
+      - MYSQL_ROOT_HOST=%
+    cap_add:
+      - SYS_NICE
+    restart: always
+    ports:
+      - '3307:3306'
+  mailhog:
+    image: mailhog/mailhog:latest
+    container_name: cu_mailhog
+    ports:
+      - '1025:1025'
+      - '8025:8025'
+
+volumes:
+  nodemodules:
+  vendor:
+
+networks:
+  default:
+    name: cu-dockertown
