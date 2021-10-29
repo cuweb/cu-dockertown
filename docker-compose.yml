@@ -1,6 +1,21 @@
 version: '3'
 
 services:
+  backend:
+    build:
+      context: ./backend
+    container_name: cu_backend
+    depends_on:
+      - mysql
+    restart: always
+    volumes:
+      - ./_config/php/php.conf.ini:/usr/local/etc/php/conf.d/conf.ini
+      - ./_config/apache/laravel.conf:/etc/apache2/sites-available/000-default.conf
+      - ./backend:/var/www/html
+      - vendor:/var/www/html/vendor
+    env_file: ./backend/.env.example
+    ports:
+      - '8081:80'
   frontend:
     build:
       context: ./frontend
