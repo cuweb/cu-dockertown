@@ -19,7 +19,7 @@ Using a terminal, navigate to the folder containing the `docker-compose.yml` fil
 | ---------------------- | -------------------------------------------------------- |
 | `docker-compose up`    | Bring up all services, composer install on cutheme / api |
 | `docker-compose up -d` | Same as above, but will run in background                |
-| `docker-compose down`  | Stop running containers                                  |
+| `docker-compose down`  | Stop running containers (if you ran in background)       |
 
 ## URLs
 
