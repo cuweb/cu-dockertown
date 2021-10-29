@@ -14,6 +14,3 @@ COPY . /usr/src
 
 # EXPOSE PORT
 EXPOSE 3000
-
-# Running the app
-CMD "npm" "run" "serve" "--" "--port" "3000"
