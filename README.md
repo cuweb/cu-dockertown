@@ -19,7 +19,7 @@ Using a terminal, navigate to the folder containing the `docker-compose.yml` fil
 | `docker-compose up -d` | Same as above, but will run in background                |
 | `docker-compose down`  | Stop running containers                                  |
 
-# URLS
+## URLS
 
 - Frontend (Vue): [http://localhost/](http://localhost/)
 - Backend (Laravel): [http://localhost:8081/](http://localhost:8081/)
@@ -39,10 +39,18 @@ Using a terminal, navigate to the folder containing the `docker-compose.yml` fil
 
 - Command structure is `docker-compose exec CONTAINER_NAME sh`
 
-### DB Access Once Running
+## DB Access Once Running
 
-- For TablePlus, find the connection in the \_config/sql folder
+- For TablePlus, find the connection in the `_config/sql` folder
 - Host: `127.0.0.1`
 - Port: `3307`
 - User: `root`
 - Pass: `password`
+
+## XDebug
+
+- VSCode Extension: [https://marketplace.visualstudio.com/items?itemName=felixfbecker.php-debug](https://marketplace.visualstudio.com/items?itemName=felixfbecker.php-debug)
+- Browser Extension: (see link for XDebug Helper Here) [https://www.jetbrains.com/help/phpstorm/browser-debugging-extensions.html](https://www.jetbrains.com/help/phpstorm/browser-debugging-extensions.html)
+- Configuration is in the `.vscode` folder in the `launch.json` file
+- To start debugging, click on the "Run and Debug" icon on the left side of VSCode and click "Listen for xdebug" (look for the green play button at the top of the second column).
+- In your browser, make sure the above browser exention is active and browse to the site.
